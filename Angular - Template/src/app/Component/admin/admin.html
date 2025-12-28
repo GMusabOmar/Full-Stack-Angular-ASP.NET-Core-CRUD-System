@@ -1,0 +1,27 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Address</th>
+      <th id="AddNewStudent">
+        <button class="btn-add" [routerLink]="['/Admin/AddNewStudent']">Add New Student</button>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of student | async">
+      <td data-label="ID">{{ i.id }}</td>
+      <td data-label="Name">{{ i.name }}</td>
+      <td data-label="Age">{{ i.age }}</td>
+      <td data-label="Address">{{ i.address }}</td>
+      <td data-label="Actions" class="EditAndDelete">
+        <a [routerLink]="['/Admin/AddNewStudent', i.id]" target="_blank">
+          <button class="btn-edit">Edit</button>
+        </a>
+        <button class="btn-delete" (click)="deleteStudent(i.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
